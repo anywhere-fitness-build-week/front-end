@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import AxiosTest from './components/AxiosTest';
 
 function App() {
   return (
@@ -9,7 +10,9 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
+          Hello World
         </p>
+        <AxiosTest></AxiosTest>
         <a
           className="App-link"
           href="https://reactjs.org"
