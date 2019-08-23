@@ -42,6 +42,7 @@ const UserLogin = ({ errors, touched, values, status }) => {
                     name='fullname'
                     placeholder='Full Name'
                 />
+                hi
                 <Field 
                     component='input'
                     type='password'
