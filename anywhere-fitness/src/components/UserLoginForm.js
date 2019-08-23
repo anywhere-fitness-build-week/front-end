@@ -33,14 +33,14 @@ const UserLogin = ({ errors, touched, values, status }) => {
                 <Field 
                     component='input'
                     type='text'
-                    name='email'
-                    placeholder='Email'
+                    name='username'
+                    placeholder='Username'
                 />
                 <Field 
                     component='input'
                     type='text'
-                    name='client'
-                    placeholder='Name'
+                    name='fullname'
+                    placeholder='Full Name'
                 />
                 <Field 
                     component='input'
@@ -54,15 +54,15 @@ const UserLogin = ({ errors, touched, values, status }) => {
 }
 
 const formikHOC = withFormik({
-    mapPropsToValues({ email, client, password }) {
+    mapPropsToValues({ username, fullname, password }) {
         return {
-            email: email || '',
-            client: client || '',
+            username: username || '',
+            fullname: fullname || '',
             password: password || '',
         }
     },
     validationSchema: Yup.object().shape({
-        email: Yup.string().email('must have a valid email').required('please enter your email address'),
+        email: Yup.string().required('please enter your email address'),
         client: Yup.string().required('please enter your name'),
         password: Yup.string().min(8).required('please enter your password')
     }),
@@ -70,6 +70,7 @@ const formikHOC = withFormik({
         Axios
             .post('https://anywhere-fitness-azra-be.herokuapp.com/api/auth/client-register', values)
             .then( res => {
+                debugger
                 console.log(res.data, 'inside axios post, handlesubmit, userloginform')
                 setStatus(res.data)
                 resetForm()
