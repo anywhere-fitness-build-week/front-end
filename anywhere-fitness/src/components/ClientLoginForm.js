@@ -3,6 +3,8 @@ import Axios from 'axios';
 import styled from 'styled-components';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
+import { setUseProxies } from 'immer';
+import { isUserWhitespacable } from '@babel/types';
 
 
 
@@ -20,35 +22,35 @@ const UserLogin = ({ errors, touched, values, status }) => {
     //         .catch
     // }, [])
 
-
-    const ThisDiv = styled.div`
-    width: 200px;
-    margin: 10px;
-    background: cyan;
-    `;
+    useEffect(() => {
+        if(status) {
+            setUser([...user, status])
+        }
+    }, [status])
 
     return(
-        <section className='user-login-form'>
+        <section className='client-registration-form'>
             <Form>
-                <Field 
-                    component='input'
-                    type='text'
-                    name='username'
-                    placeholder='Username'
-                />
                 <Field 
                     component='input'
                     type='text'
                     name='fullname'
                     placeholder='Full Name'
                 />
-                hi
+                <Field 
+                    component='input'
+                    type='text'
+                    name='username'
+                    placeholder='Username'
+                />
+                
                 <Field 
                     component='input'
                     type='password'
                     name='password'
                     placeholder='Password'
                 />
+                <button type='submit'>Submit</button>
             </Form>
         </section>
     )
@@ -63,22 +65,24 @@ const formikHOC = withFormik({
         }
     },
     validationSchema: Yup.object().shape({
-        email: Yup.string().required('please enter your email address'),
-        client: Yup.string().required('please enter your name'),
+        username: Yup.string().required('please enter your username'),
+        fullname: Yup.string().required('please enter your full name'),
         password: Yup.string().min(8).required('please enter your password')
     }),
     handleSubmit(values, { setStatus, resetForm }) {
+        console.log(values, 'inside handlesubmit')
         Axios
-            .post('https://anywhere-fitness-azra-be.herokuapp.com/api/auth/client-register', values)
+            .post('https://reqres.in/api/users', values)
             .then( res => {
-                debugger
                 console.log(res.data, 'inside axios post, handlesubmit, userloginform')
+
                 setStatus(res.data)
                 resetForm()
             })
+            .catch(denied => console.log(denied))
     }
 })
 
-const UserLoginForm = formikHOC(UserLogin)
+const ClientLoginForm = formikHOC(UserLogin)
 
-export default UserLoginForm
+export default ClientLoginForm

@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import UserLoginForm from './components/UserLoginForm';
+import ClientLoginForm from './components/ClientLoginForm';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
           Hello World
         </p>
-        <UserLoginForm></UserLoginForm>
+        <ClientLoginForm></ClientLoginForm>
         <a
           className="App-link"
           href="https://reactjs.org"
