@@ -1,7 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ClientRegisterForm from './components/ClientRegisterForm';
 import ClientLoginForm from './components/ClientLoginForm';
+import ClientClassList from './components/ClientClassList';
+
 
 function App() {
   return (
@@ -12,18 +15,13 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
           Hello World
         </p>
-        <ClientLoginForm></ClientLoginForm>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <ClientRegisterForm></ClientRegisterForm>
+        <ClientLoginForm />
+        <ClientClassList />
       </header>
     </div>
   );
+  
 }
 
 export default App;

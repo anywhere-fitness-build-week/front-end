@@ -4,15 +4,12 @@ import styled from 'styled-components';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
-const UserLogin = ({ errors, touched, values, status }) => {
 
-    const [ user, setUser ] = useState({})
 
-    // const [ classes, setClasses ] = useState([])
-    
 
-    
+const UserRegister = ({ errors, touched, values, status }) => {
 
+    const [ user, setUser ] = useState([])
 
     // useEffect(() => {
     //     Axios
@@ -25,27 +22,19 @@ const UserLogin = ({ errors, touched, values, status }) => {
 
     useEffect(() => {
         if(status) {
-            setUser( status )
+            setUser([...user, status])
         }
-        
-        localStorage.setItem('token', user.token)
-        // var token = localStorage.getItem('token')
-        // Axios({
-        //     method: 'get',
-        //     url: 'https://anywhere-fitness-azra-be.herokuapp.com/api/classes',
-        //     headers: {'authorization' : token}
-        // }).then(res => {
-        //     setClasses(res.data)
-        //     console.log(res)
-        // }).catch(err => console.log(err))
-
     }, [status])
 
-
-
     return(
-        <section className='client-login-form'>
+        <section className='client-registration-form'>
             <Form>
+                <Field 
+                    component='input'
+                    type='text'
+                    name='fullname'
+                    placeholder='Full Name'
+                />
                 <Field 
                     component='input'
                     type='text'
@@ -66,20 +55,22 @@ const UserLogin = ({ errors, touched, values, status }) => {
 }
 
 const formikHOC = withFormik({
-    mapPropsToValues({ username, password }) {
+    mapPropsToValues({ username, fullname, password }) {
         return {
             username: username || '',
+            fullname: fullname || '',
             password: password || '',
         }
     },
     validationSchema: Yup.object().shape({
         username: Yup.string().required('please enter your username'),
+        fullname: Yup.string().required('please enter your full name'),
         password: Yup.string().min(8).required('please enter your password')
     }),
     handleSubmit(values, { setStatus, resetForm }) {
         console.log(values, 'inside handlesubmit')
         Axios
-            .post('https://anywhere-fitness-azra-be.herokuapp.com/api/auth/client-login', values)
+            .post('https://anywhere-fitness-azra-be.herokuapp.com/api/auth/client-register', values)
             .then( res => {
                 console.log(res.data, 'inside axios post, handlesubmit, userloginform')
 
@@ -90,6 +81,6 @@ const formikHOC = withFormik({
     }
 })
 
-const ClientLoginForm = formikHOC(UserLogin)
+const ClientRegisterForm = formikHOC(UserRegister)
 
-export default ClientLoginForm
+export default ClientRegisterForm
