@@ -48,6 +48,7 @@ const UserRegister = ({ errors, touched, values, status }) => {
                     name='password'
                     placeholder='Password'
                 />
+                <p>If you get routed back to the home page you've successfully registered.</p>
                 <button type='submit'>Submit</button>
             </Form>
         </section>
@@ -75,7 +76,7 @@ const formikHOC = withFormik({
                 console.log(res.data, 'inside axios post, handlesubmit, userloginform')
 
                 setStatus(res.data)
-                resetForm()
+                window.location = '/'
             })
             .catch(denied => console.log(denied))
     }
