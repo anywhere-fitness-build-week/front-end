@@ -23,18 +23,29 @@ const ClientClassList = () => {
 
 
 
-    
+    var ClientInfo = styled.div`
+        max-width: 800px;
+    `;
 
     
 
     console.log(localStorage.getItem('token'), 'inside ClientClassList')
 
     return(
-        <div>
-            {/* {classes.forEach(cv => {
-                return(<div>{cv.name}</div>)
-            })} */}
-        </div>
+        <ClientInfo>
+            {classes.map(cv => {
+                return(
+                <div key={cv.id}>
+                    <h4>Instructor id: {cv.instructor_id}</h4>
+                    <h5>Class: {cv.name}</h5>
+                    <p>Beetroot water spinach okra water chestnut ricebean pea catsear courgette summer purslane. Water spinach arugula pea tatsoi aubergine spring pea sprouts fava bean.</p>
+
+                    
+                
+                </div>
+                )
+            })}
+        </ClientInfo>
         
     )
 

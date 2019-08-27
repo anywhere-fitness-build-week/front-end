@@ -29,6 +29,8 @@ const UserLogin = ({ errors, touched, values, status }) => {
         }
         
         localStorage.setItem('token', user.token)
+        
+
         // var token = localStorage.getItem('token')
         // Axios({
         //     method: 'get',
@@ -84,6 +86,7 @@ const formikHOC = withFormik({
                 console.log(res.data, 'inside axios post, handlesubmit, userloginform')
 
                 setStatus(res.data)
+                window.location = '/client-login/classes'
                 resetForm()
             })
             .catch(denied => console.log(denied))
