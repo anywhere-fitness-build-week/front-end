@@ -8,28 +8,24 @@ const ClientClassList = () => {
     const [ classes, setClasses ] = useState([])
 
 
+    var token = localStorage.getItem('token')
 
-    if(token == undefined){
-        console.log('token is undefined')
-    }
-    else(
-        useEffect(() => {
-        Axios({
-                method: 'get',
-                url: 'https://anywhere-fitness-azra-be.herokuapp.com/api/classes',
-                headers: {'authorization' : token}
-            }).then(res => {
-                setClasses(res.data)
-                console.log(res, 'inside useEffect inside ClientClassList')
-            }).catch(err => console.log(err))
-        }, [])
-        )
-        
+    useEffect(() => {
+    Axios({
+            method: 'get',
+            url: 'https://anywhere-fitness-azra-be.herokuapp.com/api/classes',
+            headers: {'authorization' : token}
+        }).then(res => {
+            setClasses(res.data)
+            console.log(res, 'inside useEffect inside ClientClassList')
+        }).catch(err => console.log(err))
+    }, [])
+
 
 
     
 
-    var token = localStorage.getItem('token')
+    
 
     console.log(localStorage.getItem('token'), 'inside ClientClassList')
 
