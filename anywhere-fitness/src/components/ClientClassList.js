@@ -32,10 +32,11 @@ const ClientClassList = () => {
     console.log(localStorage.getItem('token'), 'inside ClientClassList')
     
     if(token == 'undefined') {
-        return(<h2>If nothing displays, go back to the home page and log in again.</h2>)
+        return(<h2>If nothing displays, please go back to the home or login page and log in again.</h2>)
     } else {
         return(
             <ClientInfo>
+                <h1>Class List:</h1>
                 
                 
                 {classes.map(cv => {

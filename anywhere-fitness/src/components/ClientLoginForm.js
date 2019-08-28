@@ -47,6 +47,7 @@ const UserLogin = ({ errors, touched, values, status }) => {
 
     return(
         <section className='client-login-form'>
+            <div>Anywhere Fitness Log In:</div>
             <Form>
                 <Field 
                     component='input'
