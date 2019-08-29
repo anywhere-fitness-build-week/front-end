@@ -46,7 +46,7 @@ const ClientClassList = () => {
                         <h5>Class: {cv.name}</h5>
                         <p>Class information: Beetroot water spinach okra water chestnut ricebean pea catsear courgette summer purslane. Water spinach arugula pea tatsoi aubergine spring pea sprouts fava bean.</p>
 
-                        
+                
                     
                     </div>
                     )
