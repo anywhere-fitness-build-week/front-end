@@ -1,0 +1,9 @@
+[build]
+command = "yarn build"
+functions = "functions"
+publish = "anywhere-fitness/build"
+base = "anywhere-fitness"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
