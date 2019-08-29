@@ -32,10 +32,11 @@ const ClientClassList = () => {
     console.log(localStorage.getItem('token'), 'inside ClientClassList')
     
     if(token == 'undefined') {
-        return(<h2>If nothing displays, go back to the home page and log in again.</h2>)
+        return(<h2>If nothing displays, please go back to the home or login page and log in again.</h2>)
     } else {
         return(
             <ClientInfo>
+                <h1>Class List:</h1>
                 
                 
                 {classes.map(cv => {
@@ -43,7 +44,7 @@ const ClientClassList = () => {
                     <div key={cv.id}>
                         <h4>Instructor id: {cv.instructor_id}</h4>
                         <h5>Class: {cv.name}</h5>
-                        <p>Beetroot water spinach okra water chestnut ricebean pea catsear courgette summer purslane. Water spinach arugula pea tatsoi aubergine spring pea sprouts fava bean.</p>
+                        <p>Class information: Beetroot water spinach okra water chestnut ricebean pea catsear courgette summer purslane. Water spinach arugula pea tatsoi aubergine spring pea sprouts fava bean.</p>
 
                         
                     

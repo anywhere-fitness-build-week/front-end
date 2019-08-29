@@ -27,31 +27,35 @@ const UserRegister = ({ errors, touched, values, status }) => {
     }, [status])
 
     return(
-        <section className='client-registration-form'>
-            <Form>
-                <Field 
-                    component='input'
-                    type='text'
-                    name='fullname'
-                    placeholder='Full Name'
-                />
-                <Field 
-                    component='input'
-                    type='text'
-                    name='username'
-                    placeholder='Username'
-                />
-                
-                <Field 
-                    component='input'
-                    type='password'
-                    name='password'
-                    placeholder='Password'
-                />
-                <p>If you get routed back to the home page you've successfully registered.</p>
-                <button type='submit'>Submit</button>
-            </Form>
-        </section>
+        <div>
+            <div>Anywhere Fitness Registration:</div>
+            <section className='client-registration-form'>
+                <Form>
+                    <Field 
+                        component='input'
+                        type='text'
+                        name='fullname'
+                        placeholder='Full Name'
+                    />
+                    <Field 
+                        component='input'
+                        type='text'
+                        name='username'
+                        placeholder='Username'
+                    />
+                    
+                    <Field 
+                        component='input'
+                        type='password'
+                        name='password'
+                        placeholder='Password'
+                    />
+                    <p>If you get routed back to the home page you've successfully registered.</p>
+                    <button type='submit'>Submit</button>
+                </Form>
+            </section>
+        </div>
+
     )
 }
 
