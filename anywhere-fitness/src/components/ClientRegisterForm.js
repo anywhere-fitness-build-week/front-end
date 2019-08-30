@@ -96,7 +96,7 @@ const formikHOC = withFormik({
             .post('https://anywhere-fitness-azra-be.herokuapp.com/api/auth/client-register', values)
             .then( res => {
                 setStatus(res.data)
-                window.location = '/'
+                window.location = 'https://anywhere-fitness-landing-page.netlify.com/'
             })
             .catch(denied => console.log(denied))
     }
