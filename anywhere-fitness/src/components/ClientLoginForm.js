@@ -8,20 +8,6 @@ const UserLogin = ({ errors, touched, values, status }) => {
 
     const [ user, setUser ] = useState({})
 
-    // const [ classes, setClasses ] = useState([])
-    
-
-    
-
-
-    // useEffect(() => {
-    //     Axios
-    //         .post('https://anywhere-fitness-azra-be.herokuapp.com/api/auth/register')
-    //         .then(res => {
-    //             console.log(res)
-    //         })
-    //         .catch
-    // }, [])
 
     useEffect(() => {
         if(status) {
@@ -29,17 +15,6 @@ const UserLogin = ({ errors, touched, values, status }) => {
         }
         
         localStorage.setItem('token', user.token)
-        
-
-        // var token = localStorage.getItem('token')
-        // Axios({
-        //     method: 'get',
-        //     url: 'https://anywhere-fitness-azra-be.herokuapp.com/api/classes',
-        //     headers: {'authorization' : token}
-        // }).then(res => {
-        //     setClasses(res.data)
-        //     console.log(res)
-        // }).catch(err => console.log(err))
 
     }, [status])
 
@@ -80,12 +55,9 @@ const formikHOC = withFormik({
         password: Yup.string().min(8).required('please enter your password')
     }),
     handleSubmit(values, { setStatus, resetForm }) {
-        console.log(values, 'inside handlesubmit')
         Axios
             .post('https://anywhere-fitness-azra-be.herokuapp.com/api/auth/client-login', values)
             .then( res => {
-                console.log(res.data, 'inside axios post, handlesubmit, userloginform')
-
                 setStatus(res.data)
                 window.location = '/client-login/classes'
                 resetForm()

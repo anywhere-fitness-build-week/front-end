@@ -11,15 +11,6 @@ const UserRegister = ({ errors, touched, values, status }) => {
 
     const [ user, setUser ] = useState([])
 
-    // useEffect(() => {
-    //     Axios
-    //         .post('https://anywhere-fitness-azra-be.herokuapp.com/api/auth/register')
-    //         .then(res => {
-    //             console.log(res)
-    //         })
-    //         .catch
-    // }, [])
-
     useEffect(() => {
         if(status) {
             setUser([...user, status])
@@ -73,12 +64,9 @@ const formikHOC = withFormik({
         password: Yup.string().min(8).required('please enter your password')
     }),
     handleSubmit(values, { setStatus, resetForm }) {
-        console.log(values, 'inside handlesubmit')
         Axios
             .post('https://anywhere-fitness-azra-be.herokuapp.com/api/auth/client-register', values)
             .then( res => {
-                console.log(res.data, 'inside axios post, handlesubmit, userloginform')
-
                 setStatus(res.data)
                 window.location = '/'
             })
