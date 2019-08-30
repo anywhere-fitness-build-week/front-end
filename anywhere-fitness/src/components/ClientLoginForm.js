@@ -8,20 +8,6 @@ const UserLogin = ({ errors, touched, values, status }) => {
 
     const [ user, setUser ] = useState({})
 
-    // const [ classes, setClasses ] = useState([])
-    
-
-    
-
-
-    // useEffect(() => {
-    //     Axios
-    //         .post('https://anywhere-fitness-azra-be.herokuapp.com/api/auth/register')
-    //         .then(res => {
-    //             console.log(res)
-    //         })
-    //         .catch
-    // }, [])
 
     useEffect(() => {
         if(status) {
@@ -29,40 +15,51 @@ const UserLogin = ({ errors, touched, values, status }) => {
         }
         
         localStorage.setItem('token', user.token)
-        
-
-        // var token = localStorage.getItem('token')
-        // Axios({
-        //     method: 'get',
-        //     url: 'https://anywhere-fitness-azra-be.herokuapp.com/api/classes',
-        //     headers: {'authorization' : token}
-        // }).then(res => {
-        //     setClasses(res.data)
-        //     console.log(res)
-        // }).catch(err => console.log(err))
 
     }, [status])
 
+    var LogSubmit = styled.button`
+        border-radius: 5px;
+        min-width: 75px;
+        height: auto;
+        margin: 20px;
+        color: smokewhite;
+        background: #FF7E79;
+        font-size: 20px;
+    `;
 
+    var LogSection = styled.section`
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+    `;
 
     return(
         <section className='client-login-form'>
             <div>Anywhere Fitness Log In:</div>
-            <Form>
-                <Field 
-                    component='input'
-                    type='text'
-                    name='username'
-                    placeholder='Username'
-                />
-                
-                <Field 
-                    component='input'
-                    type='password'
-                    name='password'
-                    placeholder='Password'
-                />
-                <button type='submit'>Submit</button>
+            <Form className='log-form'>
+                <LogSection>
+                    <Field 
+                        component='input'
+                        type='text'
+                        name='username'
+                        placeholder='Username'
+                    />
+                    {touched.username && errors.username && (
+                        <p className='error'>{errors.username}</p>
+                    )}                 
+
+                    <Field 
+                        component='input'
+                        type='password'
+                        name='password'
+                        placeholder='Password'
+                    />
+                    {touched.password && errors.password && (
+                        <p className='error'>{errors.password}</p>
+                    )}                 
+                    <LogSubmit type='submit'>Submit</LogSubmit>
+                </LogSection>
             </Form>
         </section>
     )
@@ -80,12 +77,9 @@ const formikHOC = withFormik({
         password: Yup.string().min(8).required('please enter your password')
     }),
     handleSubmit(values, { setStatus, resetForm }) {
-        console.log(values, 'inside handlesubmit')
         Axios
             .post('https://anywhere-fitness-azra-be.herokuapp.com/api/auth/client-login', values)
             .then( res => {
-                console.log(res.data, 'inside axios post, handlesubmit, userloginform')
-
                 setStatus(res.data)
                 window.location = '/client-login/classes'
                 resetForm()

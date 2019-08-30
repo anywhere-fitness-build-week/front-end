@@ -17,7 +17,7 @@ const ClientClassList = () => {
             headers: {'authorization' : token}
         }).then(res => {
             setClasses(res.data)
-            console.log(res, 'inside useEffect inside ClientClassList')
+
         }).catch(err => console.log(err))
     }, [])
 
@@ -27,9 +27,6 @@ const ClientClassList = () => {
         max-width: 800px;
     `;
 
-    
-
-    console.log(localStorage.getItem('token'), 'inside ClientClassList')
     
     if(token == 'undefined') {
         return(<h2>If nothing displays, please go back to the home or login page and log in again.</h2>)
@@ -46,7 +43,7 @@ const ClientClassList = () => {
                         <h5>Class: {cv.name}</h5>
                         <p>Class information: Beetroot water spinach okra water chestnut ricebean pea catsear courgette summer purslane. Water spinach arugula pea tatsoi aubergine spring pea sprouts fava bean.</p>
 
-                        
+                
                     
                     </div>
                     )

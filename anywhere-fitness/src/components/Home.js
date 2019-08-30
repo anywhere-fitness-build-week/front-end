@@ -9,8 +9,6 @@ const Home = () => {
         display: flex;
         flex-direction: column;
         flexwrap: wrap;
-        background: white;
-        color: cyan;
         max-width: 300px;
         justify-content: space-evenly;
     `;
@@ -21,13 +19,14 @@ const Home = () => {
         height: auto;
         margin: 20px;
         color: smokewhite;
-        background: purple;
+        background: #FF7E79;
         font-size: 20px;
     `;
     return(
         <div>
-            Insert webpt9's landing page
+            
             <LinkDiv>
+                Insert webpt9's landing page
                 <Link to='/client-register'><LinkButton>Client Register</LinkButton></Link>
                 <Link to='/client-login'><LinkButton>Client Login</LinkButton></Link>
             </LinkDiv>

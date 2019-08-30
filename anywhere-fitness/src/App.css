@@ -9,7 +9,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #531B93;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,6 +21,33 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.reg-form {
+  margin-top: 30px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.log-form {
+  margin-top: 30px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+input.error {
+  border-color: red;
 }
 
 @keyframes App-logo-spin {
