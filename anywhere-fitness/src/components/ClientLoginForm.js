@@ -18,26 +18,48 @@ const UserLogin = ({ errors, touched, values, status }) => {
 
     }, [status])
 
+    var LogSubmit = styled.button`
+        border-radius: 5px;
+        min-width: 75px;
+        height: auto;
+        margin: 20px;
+        color: smokewhite;
+        background: #FF7E79;
+        font-size: 20px;
+    `;
 
+    var LogSection = styled.section`
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+    `;
 
     return(
         <section className='client-login-form'>
             <div>Anywhere Fitness Log In:</div>
-            <Form>
-                <Field 
-                    component='input'
-                    type='text'
-                    name='username'
-                    placeholder='Username'
-                />
-                
-                <Field 
-                    component='input'
-                    type='password'
-                    name='password'
-                    placeholder='Password'
-                />
-                <button type='submit'>Submit</button>
+            <Form className='log-form'>
+                <LogSection>
+                    <Field 
+                        component='input'
+                        type='text'
+                        name='username'
+                        placeholder='Username'
+                    />
+                    {touched.username && errors.username && (
+                        <p className='error'>{errors.username}</p>
+                    )}                 
+
+                    <Field 
+                        component='input'
+                        type='password'
+                        name='password'
+                        placeholder='Password'
+                    />
+                    {touched.password && errors.password && (
+                        <p className='error'>{errors.password}</p>
+                    )}                 
+                    <LogSubmit type='submit'>Submit</LogSubmit>
+                </LogSection>
             </Form>
         </section>
     )

@@ -17,32 +17,60 @@ const UserRegister = ({ errors, touched, values, status }) => {
         }
     }, [status])
 
+    var RegSection = styled.section`
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+    `;
+
+    var RegSubmit = styled.button`
+        border-radius: 5px;
+        min-width: 75px;
+        height: auto;
+        margin: 20px;
+        color: smokewhite;
+        background: #FF7E79;
+        font-size: 20px;
+    `;
+
     return(
         <div>
             <div>Anywhere Fitness Registration:</div>
             <section className='client-registration-form'>
-                <Form>
-                    <Field 
-                        component='input'
-                        type='text'
-                        name='fullname'
-                        placeholder='Full Name'
-                    />
-                    <Field 
-                        component='input'
-                        type='text'
-                        name='username'
-                        placeholder='Username'
-                    />
-                    
-                    <Field 
-                        component='input'
-                        type='password'
-                        name='password'
-                        placeholder='Password'
-                    />
+                <Form className='reg-form'>
+                    <RegSection>
+                        <Field 
+                            component='input'
+                            type='text'
+                            name='fullname'
+                            placeholder='Full Name'
+                        />
+                            {touched.fullname && errors.fullname && (
+                                <p className='error'>{errors.fullname}</p>
+                            )}
+                        <Field 
+                            component='input'
+                            type='text'
+                            name='username'
+                            placeholder='Username'
+                        />
+                        {touched.username && errors.username && (
+                            <p className='error'>{errors.username}</p>
+                        )}                        
+
+                        <Field 
+                            component='input'
+                            type='password'
+                            name='password'
+                            placeholder='Password'
+                        />
+                        {touched.password && errors.password && (
+                            <p className='error'>{errors.password}</p>
+                        )}                        
+                    </RegSection>
+
                     <p>If you get routed back to the home page you've successfully registered.</p>
-                    <button type='submit'>Submit</button>
+                    <RegSubmit type='submit'>Submit</RegSubmit>
                 </Form>
             </section>
         </div>
